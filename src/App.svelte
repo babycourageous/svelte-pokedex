@@ -4,14 +4,28 @@
 
   import PokemonCard from './components/PokemonCard.svelte'
   // let url = 'https://pokeapi.co/api/v2/pokemon'
-  let pokemons = []
 
-  onMount(async () => {
-    let url = 'https://pokeapi.co/api/v2/pokemon'
+  let pokemons = []
+  let offset = 0
+  let amountToLoad = 24
+
+  $: {
+    getPokemon(offset)
+  }
+
+  async function getPokemon() {
+    let url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${amountToLoad}`
     const data = await ky.get(url).json()
 
-    pokemons = data.results
-  })
+    pokemons = [...pokemons, ...data.results]
+    console.log(pokemons)
+  }
+
+  function handleMoreClick(event) {
+    offset += amountToLoad
+  }
+
+  // onMount()
 </script>
 
 <header class="flex items-center justify-between w-full bg-red-600 px-8 py-4">
@@ -30,4 +44,15 @@
     {/each}
   </ul>
 
+  {#if pokemons.length > 0}
+    <button
+      class="border border-red-700 font-bold hover:bg-red-700 hover:text-white
+      px-4 py-2 rounded text-red-700"
+      type="button"
+      id="more-button"
+      on:click={handleMoreClick}
+    >
+      Load More
+    </button>
+  {/if}
 </div>
