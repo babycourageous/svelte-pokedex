@@ -1,5 +1,5 @@
 <script>
-  import { link } from 'svelte-routing'
+  import { Link, link } from 'svelte-routing'
   import { toTitleCase } from '../utils.js'
 
   export let name
@@ -19,7 +19,7 @@
 >
   <header class="px-6 py-4">
     <h2 class="font-bold text-xl mb-2">
-      <a href="/{index}" use:link>{toTitleCase(name, '-')}</a>
+      <Link href="/{index}">{toTitleCase(name, '-')}</Link>
     </h2>
   </header>
   <img class="w-24 h-24" src={imgurl} alt="" />
