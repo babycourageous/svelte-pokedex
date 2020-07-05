@@ -27,7 +27,7 @@ export default {
         css.write('public/build/bundle.css')
       },
     }),
-    postcss({ extract: 'public/build/tailwind.css' }),
+    postcss({ extract: 'tailwind.css' }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
