@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import ky from 'ky'
 
   import PokemonCard from '../components/PokemonCard.svelte'
@@ -7,18 +7,22 @@
   let offset = 0
   let amountToLoad = 24
 
-  $: {
-    getPokemon(offset)
+  interface Data {
+    results: []
   }
 
-  async function getPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${amountToLoad}`
-    const data = await ky.get(url).json()
+  $: {
+    getPokemon(offset, amountToLoad)
+  }
+
+  async function getPokemon(off: number, amt: number) {
+    let url = `https://pokeapi.co/api/v2/pokemon?offset=${off}&limit=${amt}`
+    const data: Data = await ky.get(url).json()
 
     pokemons = [...pokemons, ...data.results]
   }
 
-  function handleMoreClick(event) {
+  function handleMoreClick() {
     offset += amountToLoad
   }
 </script>

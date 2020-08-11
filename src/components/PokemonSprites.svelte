@@ -1,5 +1,7 @@
-<script>
-  export let sprites
+<script lang="ts">
+  import type { Sprites } from '../types'
+
+  export let sprites: Sprites
 </script>
 
 {#if sprites.front_default}
