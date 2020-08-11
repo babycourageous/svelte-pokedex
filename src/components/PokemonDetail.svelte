@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
   import { Link } from 'svelte-routing'
 
+  import type { Pokemon } from '../types'
   import DataBar from './DataBar.svelte'
   import PokemonSprites from './PokemonSprites.svelte'
 
-  export let pokemon
+  export let pokemon: Pokemon
 
   const femaleColor = 'pink-600'
   const maleColor = 'blue-500'

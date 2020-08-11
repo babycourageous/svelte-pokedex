@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
   import { Link, link } from 'svelte-routing'
   import { toTitleCase } from '../utils.js'
 
-  export let name
-  export let url
+  export let name: string
+  export let url: string
 
   const urlArray = url.split('/')
   const indexLocation = urlArray.length - 2
@@ -14,8 +14,8 @@
 </script>
 
 <article
-  class="flex flex-col items-center max-w-sm border-red-600 border-t-8
-  border-red-500 rounded overflow-hidden shadow-lg"
+  class="flex flex-col items-center max-w-sm border-red-600 border-t-8 rounded
+  overflow-hidden shadow-lg"
 >
   <header class="px-6 py-4">
     <h2 class="font-bold text-xl mb-2">

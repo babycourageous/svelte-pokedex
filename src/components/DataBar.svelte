@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
   import { tweened } from 'svelte/motion'
 
-  export let statColor
-  export let value
+  export let statColor: string
+  export let value: number
 
   let amount = tweened(0)
   $: amount.set(value)
