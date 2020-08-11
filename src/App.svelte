@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import ky from 'ky'
   import { Router, Link, Route } from 'svelte-routing'
 
